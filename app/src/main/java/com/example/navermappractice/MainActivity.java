@@ -1,12 +1,17 @@
 package com.example.navermappractice;
 
+import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.MapFragment;
@@ -31,6 +36,25 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         }
         //네이버 객체를 비동기화 시킴
         mapFragment.getMapAsync(this);
+
+        Button btn1 = (Button) findViewById(R.id.button2);
+        btn1.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Fragment fr2=new SubActivity();
+                FragmentManager fm=getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                fragmentTransaction.replace(R.id.map_fragment,fr2);
+                fragmentTransaction.commit();
+            }
+
+        });
+        Button btn2=(Button) findViewById(R.id.button3);
+        btn2.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(this,Practice.class);
+
     }
 
     //실행될 코드
